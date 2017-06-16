@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Scripts/player.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/player_stand.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 29.9307, 54.1273 )
+
+[node name="Node" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 128, 128 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 65549, 0, 65550, 0, 65551, 0, 65552, 0, 65553, 0, 65554, 0, 65555, 0, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 0, 131090, 0, 131091, 0, 131100, 0, 131101, 0, 131102, 0, 196608, 0, 196609, 0, 196610, 0, 196611, 0, 196612, 0, 196613, 0, 196614, 0, 196615, 0, 196616, 0, 196617, 0, 196618, 0, 196619, 0, 196620, 0, 196627, 0, 196634, 0, 196635, 0, 196636, 0, 262162, 0, 262163, 0, 262169, 0, 262170, 0, 327696, 0, 327697, 0, 327698, 0, 327703, 0, 327704, 0, 393227, 0, 393228, 0, 393229, 0, 393230, 0, 393231, 0, 393232, 0, 393238, 0, 458755, 0, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 0, 458763, 0, 458764, 0, 458765, 0, 458766, 0, 458767, 0, 458768, 0, 458769, 0, 458770, 0, 458771, 0, 458772, 0, 458773, 0, 458774, 0, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 0, 524300, 0, 524301, 0, 524302, 0, 524303, 0, 524304, 0, 524305, 0, 524306, 0, 524307, 0, 524308, 0, 524309, 0, 524310, 0, 524311, 0, 524312, 0, 524313, 0, 524314, 0, 524315, 0, 524316, 0 )
+
+[node name="player" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 210, 230 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="player"]
+
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/smoothed = false
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+
